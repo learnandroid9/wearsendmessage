@@ -42,10 +42,4 @@ public class WatchActivity extends Activity {
         });
     }
 
-    /** display the text to user */
-    public void setText(String msg) {
-        final WatchViewStub stub = (WatchViewStub) findViewById(R.id.watch_view_stub);
-        TextView textView = (TextView) stub.findViewById(R.id.text);
-        textView.setText(msg);
-    }
 }
