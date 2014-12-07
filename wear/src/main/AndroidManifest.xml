@@ -10,6 +10,7 @@
         android:label="@string/app_name"
         android:theme="@android:style/Theme.DeviceDefault" >
 
+        <!-- sender side needs to declare this -->
         <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
 
         <activity
@@ -22,6 +23,7 @@
             </intent-filter>
         </activity>
 
+        <!-- receiver side needs to declare this -->
         <service android:name=".WearMessageListenerService">
             <intent-filter>
                 <action android:name="com.google.android.gms.wearable.BIND_LISTENER" />

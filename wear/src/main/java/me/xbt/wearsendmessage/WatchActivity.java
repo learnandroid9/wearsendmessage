@@ -5,6 +5,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.wearable.view.WatchViewStub;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -62,6 +64,15 @@ public class WatchActivity extends Activity {
                     }
                     textView2.setText("# of msgs received: " + numMsg);
                 }
+
+
+                Button button = (Button)stub.findViewById(R.id.button);
+                button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        sendMessage(MSG_FROM_WEAR, "a msg from wear to mobile: " + new Date().toString());
+                    }
+                });
             }
         });
 
@@ -80,7 +91,7 @@ public class WatchActivity extends Activity {
                         Log.d(TAG, "onConnected: " + connectionHint);
                         //  "onConnected: null" is normal.
                         //  There's nothing in our bundle.
-                        sendMessage(MSG_FROM_WEAR, "a msg from wear to mobile: " + new Date().toString());
+                        //sendMessage(MSG_FROM_WEAR, "a msg from wear to mobile: " + new Date().toString());
                     }
                     @Override
                     public void onConnectionSuspended(int cause) {

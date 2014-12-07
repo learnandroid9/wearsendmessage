@@ -7,6 +7,8 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+
+        <!-- sender side needs to declare this -->
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
@@ -20,6 +22,7 @@
             </intent-filter>
         </activity>
 
+        <!-- receiver side needs to declare this -->
         <service android:name=".MobileMessageListenerService">
             <intent-filter>
                 <action android:name="com.google.android.gms.wearable.BIND_LISTENER" />
