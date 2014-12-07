@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -24,6 +25,15 @@ import java.util.List;
 
 public class PhoneActivity extends Activity {
 
+    /**
+     * parameter name for msg.
+     * used in intent.putExtra() to pass in a parameter.
+     */
+    public static final String PARAM_MSG = "param_msg";
+    /** # of msg received */
+    public static final String PARAM_NUM_MSG = "param_num_msg";
+
+
     private static final String TAG = "PhoneActivity: ";
     GoogleApiClient mGoogleApiClient;
 
@@ -31,6 +41,21 @@ public class PhoneActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phone);
+
+        TextView text = (TextView)findViewById(R.id.text);
+        TextView text2 = (TextView)findViewById(R.id.text2);
+
+        // show information received from msg from wear.
+        // get params passed to this intent.
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            String msg = extras.getString(PARAM_MSG);
+            int numMsg = extras.getInt(PARAM_NUM_MSG);
+            if (msg != null) {
+                text.setText("msg received=" + msg);
+            }
+            text2.setText("# of msgs received: " + numMsg);
+        }
 
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(new GoogleApiClient.ConnectionCallbacks() {

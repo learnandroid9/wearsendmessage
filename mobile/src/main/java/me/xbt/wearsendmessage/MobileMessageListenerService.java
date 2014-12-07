@@ -26,7 +26,7 @@ public class MobileMessageListenerService extends WearableListenerService {
     private static final String TAG = "MobileMessageListenerService";
 
     /** # of msg received */
-    //private static int msgCount = 0;
+    private static int msgCount = 0;
 
 
     @Override
@@ -37,6 +37,8 @@ public class MobileMessageListenerService extends WearableListenerService {
                 Log.d(TAG, "message received from wear to mobile.  data=" + data);
                 Intent intent = new Intent(this, PhoneActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra(PhoneActivity.PARAM_MSG, "msg received.  data=" + data);
+                intent.putExtra(PhoneActivity.PARAM_NUM_MSG, ++msgCount);
                 startActivity(intent);
             } catch (UnsupportedEncodingException ex) {
                 Log.e(TAG, "data in the message from wear is not utf-8 encoding.  message path = " + messageEvent.getPath(), ex);
