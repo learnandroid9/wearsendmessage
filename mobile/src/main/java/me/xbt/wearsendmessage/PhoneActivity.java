@@ -53,7 +53,7 @@ public class PhoneActivity extends Activity {
 //                                Log.e(TAG, "ERROR: failed to send Message: " + result.getStatus());
 //                            }
 //                        }
-                        tellWatchConnectedState("connected");
+                        //tellWatchConnectedState("connected");
                     }
                     @Override
                     public void onConnectionSuspended(int cause) {
