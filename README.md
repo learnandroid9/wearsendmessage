@@ -5,7 +5,9 @@ android wear send message from mobile to wear and the other direction
 
 
 mobile - 4.3 jellybean
+
 wear - 4.4w kitkat w
+
 
 this project is originally created on android studio 0.84, it was updated to android studio 1.0.  
 
